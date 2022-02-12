@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Domain\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Product extends Model
 {
-    public $table = 'tag';
+    public $table = 'product';
 
     protected $primaryKey = 'id';
 
