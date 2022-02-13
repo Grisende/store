@@ -1,19 +1,28 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\ProductTagController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::prefix('product')->group(function (){
+    Route::get('', [ProductController::class, 'getAllProducts']);
+    Route::get('/{id}', [ProductController::class, 'getProductById']);
+    Route::post('', [ProductController::class, 'create']);
+    Route::put('/{id}', [ProductController::class, 'update']);
+    Route::delete('/{id}', [ProductController::class, 'delete']);
+});
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('tag')->group(function (){
+    Route::get('', [TagController::class, 'getAllTags']);
+    Route::get('/{id}', [TagController::class, 'getTagProductById']);
+    Route::post('', [TagController::class, 'create']);
+    Route::put('/{id}', [TagController::class, 'update']);
+    Route::delete('/{id}', [TagController::class, 'delete']);
+});
+
+Route::prefix('product-tag')->group(function (){
+    Route::post('', [ProductTagController::class, 'create']);
+    Route::put('/{id}', [ProductTagController::class, 'update']);
+    Route::delete('/{id}', [ProductTagController::class, 'delete']);
 });
