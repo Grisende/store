@@ -12,6 +12,11 @@ class TagRepository implements TagRepositoryInterface
         return Tag::all();
     }
 
+    public function getTagById(int $id) : array
+    {
+        return Tag::findOrFail($id);
+    }
+
     public function create(string $name) : void
     {
         Tag::create();
