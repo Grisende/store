@@ -1,12 +1,17 @@
 <?php
 
-namespace App\Domain\Models;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Product extends Model
 {
-    public $table = 'tag';
+    use HasFactory;
+
+    public $table = 'products';
+
+    public $timestamps = false;
 
     protected $primaryKey = 'id';
 
