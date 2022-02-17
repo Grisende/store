@@ -4,17 +4,24 @@ namespace App\Repository;
 
 use App\Interface\ProductTagRepositoryInterface;
 use App\Models\ProductTag;
+use Illuminate\Support\Facades\DB;
 
 class ProductTagRepository implements ProductTagRepositoryInterface
 {
-    public function create(string $name) : void
+    public function model()
     {
-        ProductTag::create();
+        return ProductTag::class;
     }
 
-    public function update(int $id, string $name) : void
+    public function create(array $attributes) : void
     {
-        ProductTag::whereId($id)->update($name);
+//        dd($attributes);
+        DB::table('product_tags')->insert($attributes);
+    }
+
+    public function update(int $id, array $attributes) : void
+    {
+        ProductTag::whereId($id)->update($attributes);
     }
 
     public function delete(int $id) : void

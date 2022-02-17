@@ -28,9 +28,9 @@ class ProductService
         return $product;
     }
 
-    public function create (array $attributes) : void
+    public function create (array $attributes) : array
     {
-        $this->repository->create($attributes);
+        return $this->repository->create($attributes);
     }
 
     public function update (int $id, array $attributes) : void

@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductTag extends Model
 {
-    use HasFactory;
-
     public $table = 'product_tags';
 
     public $timestamps = false;
@@ -18,15 +15,20 @@ class ProductTag extends Model
         'tag_id'
     ];
 
-    public function products()
-    {
-        return $this->hasMany(Product::class, 'id', 'product_id');
-    }
+    protected $fillable = [
+        'product_id',
+        'tag_id'
+    ];
 
-
-
-    public function tags()
-    {
-        return $this->hasMany(Tag::class, 'id', 'tag_id');
-    }
+//    public function products()
+//    {
+//        return $this->hasMany(Product::class, 'id', 'product_id');
+//    }
+//
+//
+//
+//    public function tags()
+//    {
+//        return $this->hasMany(Tag::class, 'id', 'tag_id');
+//    }
 }

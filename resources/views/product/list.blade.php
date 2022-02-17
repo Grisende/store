@@ -13,16 +13,20 @@
             <table class="table table-responsive table-bordered table-border-primary">
                 @csrf
                 <thead>
-                <tr>
+                <tr class="text-center">
                     <th scope="col">Código do Produto</th>
                     <th scope="col">Nome do Produto</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($products as $product)
-                    <tr>
-                        <td>{{$product['id']}}</td>
+                    <tr class="text-center">
+                        <td>{{$product['product_id']}}</td>
                         <td>{{$product['name']}}</td>
+                        <td><a href="{{url('products', $product['product_id'])}}"><i class="fas fa-edit"></i></a></td>
+                        <td><a href="{{url('products', $product['product_id'])}}" class="js-del-products"><i class="fas fa-trash"></i></a></td>
                     </tr>
                 @endforeach
                 </tbody>

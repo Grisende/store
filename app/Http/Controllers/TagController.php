@@ -26,18 +26,19 @@ class TagController extends Controller
     {
         $tag = $this->service->getTagById($id);
 
-        return $tag;
-//        return view('tag/form', compact('tag'));
+        return view('tag/form', compact('tag'));
     }
 
     public function create(Request $request)
     {
         $this->service->create($request->all());
+        return $this->getAllTags();
     }
 
     public function update(int $id, Request $request)
     {
         $this->service->update($id, $request->all());
+        return $this->getAllTags();
     }
 
     public function delete(int $id)

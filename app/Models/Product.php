@@ -13,7 +13,7 @@ class Product extends Model
 
     public $timestamps = false;
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'product_id';
 
     protected $fillable = [
         'name'
@@ -24,5 +24,10 @@ class Product extends Model
         return [
             'name' => 'required'
         ];
+    }
+
+    public function ProductTags()
+    {
+        return $this->belongsToMany(ProductTag::class, 'product_tags', 'product_id', 'product_id');
     }
 }

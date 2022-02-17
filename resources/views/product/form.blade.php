@@ -6,20 +6,16 @@
 
     <div class="form">
         <div class="mt-5 p-5 w-50 mx-auto border">
-            <form class="inline-form p-5" method="POST" action="{{ url('products/') }}">
+            @if(isset($product))
+                <form class="inline-form p-5" method="post" action="{{url('products', $product['product_id'])}}">
+                @method('PUT')
+            @else
+                <form class="inline-form p-5" method="POST" action="{{url('products/')}}">
+            @endif
                 @csrf
-                <div class="">
-                    <label for="title">Nome</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
                 <div class="mt-3">
-                    <label for="title">Tag</label>
-                    <select class="form-control" id="payment_method" name="payment_method" required>
-                        <option value="{{$tag['name'] ?? ''}}">{{$tag['name'] ?? ''}}</option>
-                        @foreach($tags as $tag)
-                            <option value="{{$tag['name']}}">{{$tag['name']}}</option>
-                        @endforeach
-                    </select>
+                    <label for="title">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{$product['name'] ?? ''}}" required>
                 </div>
                 <div class="form-group text-center mt-5">
                     <a href="{{ url('products/') }}" class="btn btn-primary">Cancelar</a>

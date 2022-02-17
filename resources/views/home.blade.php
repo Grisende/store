@@ -12,6 +12,7 @@
                     <div class="card-body text-center">
                         <a href="{{url('products/form')}}" class="btn btn-primary"><i class="fas fa-plus"> Adicionar</i></a>
                         <a href="{{url('products/')}}" class="btn btn-primary"><i class="fas fa-list"> Listar</i></a>
+                        <a href="{{url('product-tags/')}}" class="btn btn-primary"><i class="fas fa-object-union"> Vincular</i></a>
                     </div>
                 </div>
             </div>

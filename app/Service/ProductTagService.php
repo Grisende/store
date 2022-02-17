@@ -14,14 +14,14 @@ class ProductTagService
         $this->repository = $repository;
     }
 
-    public function create(string $name) : void
+    public function create(array $attributes) : void
     {
-        $this->repository->create($name);
+        $this->repository->create($attributes);
     }
 
-    public function update(int $id, string $name) : void
+    public function update(int $id, array $attributes) : void
     {
-        $this->repository->create($id, $name);
+        $this->repository->create($id, $attributes);
     }
 
     public function delete(int $id) : void

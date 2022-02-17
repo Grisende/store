@@ -15,15 +15,19 @@
                 @csrf
                 <thead>
                 <tr>
-                    <th scope="col">Código da Tag</th>
-                    <th scope="col">Nome da Tag</th>
+                    <th>Código da Tag</th>
+                    <th>Nome da Tag</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($tags as $tag)
                     <tr>
-                        <td>{{$tag['id']}}</td>
+                        <td>{{$tag['tag_id']}}</td>
                         <td>{{$tag['name']}}</td>
+                        <td><a href="{{url('tags', $tag['tag_id'])}}"><i class="fas fa-edit"></i></a></td>
+                        <td><a href="{{url('tags', $tag['tag_id'])}}" class="js-del-tags"><i class="fas fa-trash"></i></a></td>
                     </tr>
                 @endforeach
                 </tbody>

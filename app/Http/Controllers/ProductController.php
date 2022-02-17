@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service\ProductService;
+use App\Service\ProductTagService;
 use App\Service\TagService;
 use Illuminate\Http\Request;
 
@@ -29,8 +30,7 @@ class ProductController extends Controller
     {
         $product = $this->service->getProductById($id);
 
-        return $product;
-//        return view('product/form', compact('product'));
+        return view('product/form', compact('product'));
     }
 
     public function form()
@@ -44,11 +44,13 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         $this->service->create($request->all());
+        return $this->getAllProducts();
     }
 
     public function update(int $id, Request $request)
     {
         $this->service->update($id, $request->all());
+        return $this->getAllProducts();
     }
 
     public function delete(int $id)

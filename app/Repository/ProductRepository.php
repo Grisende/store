@@ -17,9 +17,9 @@ class ProductRepository implements ProductRepositoryInterface
         return Product::findOrFail($id)->toArray();
     }
 
-    public function create(array $attributes) : void
+    public function create(array $attributes) : array
     {
-        Product::create($attributes);
+        return Product::create($attributes)->toArray();
     }
 
     public function update(int $id, array $attributes) : void
