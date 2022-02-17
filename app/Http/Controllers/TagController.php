@@ -19,9 +19,7 @@ class TagController extends Controller
     {
         $tags = $this->service->getAllTags();
 
-        return  $tags;
-
-//        return view('tag/list', compact('tags'));
+        return view('tag/list', compact('tags'));
     }
 
     public function getTagById(int $id)

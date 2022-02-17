@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Service\ProductService;
+use App\Service\TagService;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
 
     private $service;
+    private $tagService;
 
-    public function __construct(ProductService $service)
+    public function __construct(ProductService $service, TagService $tagService)
     {
         $this->service = $service;
+        $this->tagService = $tagService;
     }
 
     public function getAllProducts()
@@ -29,6 +32,14 @@ class ProductController extends Controller
         return $product;
 //        return view('product/form', compact('product'));
     }
+
+    public function form()
+    {
+        $tags = $this->tagService->getAllTags();
+
+        return view('product/form', compact('tags'));
+    }
+
 
     public function create(Request $request)
     {
