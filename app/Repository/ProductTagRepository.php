@@ -15,17 +15,16 @@ class ProductTagRepository implements ProductTagRepositoryInterface
 
     public function create(array $attributes) : void
     {
-//        dd($attributes);
         DB::table('product_tags')->insert($attributes);
     }
 
-    public function update(int $id, array $attributes) : void
+    public function relevanceReport() : array
     {
-        ProductTag::whereId($id)->update($attributes);
-    }
-
-    public function delete(int $id) : void
-    {
-        ProductTag::destroy($id);
+        return (array)DB::table('product_tags')
+            ->select( 'tags.tag_id','tags.name')
+            ->selectRaw('count(product_tags.product_id) as quantity')
+            ->join('tags', 'tags.tag_id', '=', 'product_tags.tag_id')
+            ->groupBy('product_tags.tag_id')
+            ->get()->all();
     }
 }

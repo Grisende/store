@@ -39,13 +39,12 @@ class ProductTagController extends Controller
         return view('home');
     }
 
-    public function update(int $id, Request $request)
+    public function relevanceReport()
     {
-        $this->service->update($id, $request->all());
-    }
+        $stdClass = $this->service->relevanceReport();
 
-    public function delete(int $id)
-    {
-        $this->service->delete($id);
+        $reports = json_decode(json_encode($stdClass), true);
+
+        return view('reports/relevance', compact('reports'));
     }
 }

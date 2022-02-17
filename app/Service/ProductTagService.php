@@ -19,14 +19,9 @@ class ProductTagService
         $this->repository->create($attributes);
     }
 
-    public function update(int $id, array $attributes) : void
+    public function relevanceReport() : array
     {
-        $this->repository->create($id, $attributes);
-    }
-
-    public function delete(int $id) : void
-    {
-        $this->repository->delete($id);
+        return $this->repository->relevanceReport();
     }
 
 }

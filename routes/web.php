@@ -29,6 +29,5 @@ Route::prefix('tags')->group(function (){
 Route::prefix('product-tags')->group(function (){
     Route::get('/', [ProductTagController::class, 'form']);
     Route::post('/', [ProductTagController::class, 'create']);
-    Route::put('/{id}', [ProductTagController::class, 'update']);
-    Route::delete('/{id}', [ProductTagController::class, 'delete']);
+    Route::get('/report', [ProductTagController::class, 'relevanceReport']);
 });
