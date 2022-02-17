@@ -19,9 +19,7 @@ class ProductController extends Controller
     {
         $products = $this->service->getAllProducts();
 
-        return $products;
-
-//        return view('product/list', compact('products'));
+        return view('product/list', compact('products'));
     }
 
     public function getProductById(int $id)

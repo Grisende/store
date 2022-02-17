@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ProductTagController;
+use App\Http\Controllers\HomeController;
+
+Route::get('', [HomeController::class, 'index']);
 
 Route::prefix('products')->group(function (){
     Route::get('', [ProductController::class, 'getAllProducts']);

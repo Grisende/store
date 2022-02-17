@@ -18,7 +18,7 @@ class TagFactory extends Factory
     {
         return [
             'id' => $this->faker->randomNumber(),
-            'name' => $this->faker->name()
+            'name' => $this->faker->word()
         ];
     }
 }

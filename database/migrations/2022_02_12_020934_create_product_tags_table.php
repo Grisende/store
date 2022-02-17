@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('product_tags', function (Blueprint $table) {
             $table->unsignedInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('product');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->unsignedInteger('tag_id');
-            $table->foreign('tag_id')->references('id')->on('tag');
+            $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
 
